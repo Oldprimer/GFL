@@ -1,0 +1,20 @@
+﻿@page
+@using GFL.Data
+@model GFL.Pages.FolderModel
+
+@if (!Model.Folder.Parent_id.HasValue)
+{
+    <form method="post" asp-route-id="@Model.Folder.Folder_id" enctype="multipart/form-data">
+        <input class="btn btn-primary" type="submit" value="Export Folders" />
+    </form>
+}
+
+<h3>Current folder: @Model.Folder.Name</h3>
+<ul class="list-unstyled">
+    @foreach (var item in Model.Folder.InnerFolders)
+    {
+        <li>
+            <a asp-page="Folder" asp-route-id="@item.Folder_id">@item.Name</a>
+        </li>
+    }
+</ul>

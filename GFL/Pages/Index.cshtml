@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="file" id="file" />
+    <input class="btn btn-primary" type="submit" value="Upload File" />
+</form>
+<div>
+    <ul class="list-unstyled">
+        @foreach (var folder in Model.Folders)
+        {
+            <li>
+                <a asp-page="Folder" asp-route-id="@folder.Folder_id">@folder.Name</a>
+            </li>
+        }
+    </ul>
+</div>
